@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Bruno Rodrigues // ossbruno@outlook.com">
+    <style>
+        body {
+    background-color: rgb(192, 189, 189);
+}
+
+body div.container {
+    display: block ;
+    background-color: black;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 50px;
+}
+
+.container h3 {
+    text-transform: uppercase;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    color: white;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+body a {
+    text-decoration: none;
+}
+
+body a.new {
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition-duration: .5s;
+    
+}
+
+body a.new:hover{
+    background-color: black;
+    color: white;
+}
+
+body div.interface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+    </style>
+
+    <title>Produtos</title>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h3>Feedback</h3>
+        </div>
+    </header>
+    
+    <div class="interface">
+        <h1>Sistema de estoque</h1>
+        <h4>Produtos disponíveis:</h4>
+        <ul>
+            {% for product in products %}
+                <a href="{% url 'update_product' product.id %}">
+                    <li> {{ product.Descrição }}</li>
+                </a>
+            {% endfor %}
+        </ul>
+
+        <a class="new" href="{% url 'create_products' %}">Novo produto</a>
+    </div>
+
+</body>
+</html>
